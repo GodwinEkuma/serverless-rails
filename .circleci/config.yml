@@ -14,3 +14,7 @@ jobs:
           name: Deploy
           command: |
             ./bin/deploy
+workflows:
+  deploy:
+    jobs:
+      - deploy
