@@ -9,7 +9,7 @@ echo "== Lamby build =="
 ./bin/_build
 
 echo "== SAM build =="
-sam build \
+sam build --use-container\
   --parameter-overrides \
     RailsEnv="${RAILS_ENV}"
 
