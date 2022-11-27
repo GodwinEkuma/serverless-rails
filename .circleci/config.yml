@@ -4,7 +4,7 @@ orbs:
 jobs:
   deploy:
     machine:
-      image: ubuntu-2204:2022.04.2
+      image: ubuntu-2204:2022.10.2
       docker_layer_caching: true
     steps:
       - checkout
@@ -14,6 +14,9 @@ jobs:
           name: Bootstrap
           command: |
             ./bin/bootstrap
+      - run:
+          name: Start all services declared in docker-compose.yml
+          command: docker-compose up -d
       - run:
           name: Deploy
           command: |
