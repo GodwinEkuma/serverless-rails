@@ -15,9 +15,10 @@ jobs:
           command: |
             ./bin/bootstrap
       - run:
-          name: Docker version
+          name: Docker Context
           command: |
             docker version
+      - run: docker info
       - run:
           name: Deploy
           command: |
