@@ -15,6 +15,10 @@ jobs:
           command: |
             ./bin/bootstrap
       - run:
+          name: Docker contex
+          command: |
+            docker context ls
+      - run:
           name: Deploy
           command: |
             ./bin/deploy
