@@ -3,27 +3,21 @@ orbs:
   aws-cli: circleci/aws-cli@3.1.3
 jobs:
   deploy:
-    docker:
-      - image: cimg/base:2022.06
-        auth:
-          username: $DOCKER_USER
-          password: $DOCKER_PASS
+    machine:
+      image: ubuntu-2204:2022.10.2
+      docker_layer_caching: true
     steps:
       - checkout
       - aws-cli/setup
-      - setup_remote_docker:
-          version: 20.10.14
+#      - setup_remote_docker
       - run:
           name: Bootstrap
           command: |
             ./bin/bootstrap
-#      - run:
-#          name: Start all services declared in docker-compose.yml
-#          command: docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
       - run:
           name: Deploy
           command: |
-             ./bin/deploy
+            ./bin/deploy
 workflows:
   aws-cli:
     jobs:
