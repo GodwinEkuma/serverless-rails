@@ -17,7 +17,7 @@ jobs:
       - run:
           name: Docker Context
           command: |
-            docker version
+            docker context ls
       - run: docker info
       - run:
           name: Deploy
