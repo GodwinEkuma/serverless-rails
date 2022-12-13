@@ -18,7 +18,7 @@ jobs:
           name: Docker Context
           command: |
             docker context ls
-      - run: docker info
+      - run: sudo groupadd docker | sudo usermod -aG docker $USER | newgrp docker
       - run:
           name: Deploy
           command: |
