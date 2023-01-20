@@ -3,9 +3,8 @@ orbs:
   aws-cli: circleci/aws-cli@3.1.3
 jobs:
   deploy:
-    machine:
-      image: ubuntu-2204:2022.04.2
-      docker_layer_caching: true
+    docker:
+      - image: cimg/base:2023.01
     steps:
       - checkout
       - aws-cli/setup
@@ -14,11 +13,6 @@ jobs:
           name: Bootstrap
           command: |
             ./bin/bootstrap
-      - run:
-          name: Docker Context
-          command: |
-            docker context ls
-      - run: sudo usermod -aG docker $USER | newgrp docker
       - run:
           name: Deploy
           command: |
